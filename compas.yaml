@@ -1,0 +1,95 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - graph: line
+        type: sensor
+        detail: 1
+        name: Температура
+        entity: sensor.0x00158d0007e0cb03_temperature
+      - graph: line
+        type: sensor
+        detail: 1
+        name: Влажность
+        entity: sensor.0x00158d0007e0cb03_humidity
+      - graph: line
+        type: sensor
+        detail: 1
+        name: Давление
+        entity: sensor.0x00158d0007e0cb03_pressure
+  - type: horizontal-stack
+    cards:
+      - type: custom:compass-card
+        indicator_sensors:
+          - sensor: sensor.wind_bearing_metno
+            indicator:
+              image: arrow_inward
+              color: black
+              dynamic_style:
+                sensor: sensor.wind_bearing_metno
+                bands:
+                  - from_value: 0
+                    color: black
+                  - from_value: 90
+                    color: black
+                  - from_value: 180
+                    color: black
+                  - from_value: 270
+                    color: black
+          - sensor: sensor.metno_2_hour_wind_bearing_forecast
+            indicator:
+              image: circle
+              color: green
+              dynamic_style:
+                sensor: metno_2_hour_wind_spead_forecast
+                bands:
+                  - from_value: 20
+                    color: yellow
+                  - from_value: 39
+                    color: orange
+                  - from_value: 50
+                    color: pink
+                  - from_value: 75
+                    color: red
+                  - from_value: 88
+                    color: brown
+                  - from_value: 117
+                    color: purple
+        value_sensors:
+          - sensor: sensor.wind_speed_metno
+        language: en
+        header:
+          title:
+            value: Ветер MET.NO
+        compass:
+          circle:
+            background_image: /local/compass.png
+            color: green
+            dynamic_style:
+              sensor: sensor.wind_speed_metno
+              bands:
+                - from_value: 20
+                  color: yellow
+                - from_value: 39
+                  color: orange
+                - from_value: 50
+                  color: pink
+                - from_value: 75
+                  color: red
+                - from_value: 88
+                  color: brown
+                - from_value: 117
+                  color: purple
+          north:
+            show: true
+            color: blue
+          east:
+            show: true
+            color: grey
+          west:
+            show: true
+            color: grey
+          south:
+            show: true
+            color: red
+            
